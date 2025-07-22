@@ -19,59 +19,34 @@ public class RuntimeEnv private constructor(clientId: String,
    private final val bifrostTriggerShortcutEndpoint: String
 
    init {
-      this.clientId = var1;
-      this.clientSecret = var2;
-      this.niflheimEndpoint = var3;
-      this.heimdallCheckEndpoint = var4;
-      this.bifrostGetModeEndpoint = var5;
-      this.heimdallGetSiteTokenHash = var6;
-      this.bifrostChangeModeEndpoint = var7;
-      this.bifrostTriggerShortcutEndpoint = var8;
+      this.clientId = clientId;
+      this.clientSecret = clientSecret;
+      this.niflheimEndpoint = niflheimEndpoint;
+      this.heimdallCheckEndpoint = heimdallCheckEndpoint;
+      this.bifrostGetModeEndpoint = bifrostGetModeEndpoint;
+      this.heimdallGetSiteTokenHash = heimdallGetSiteTokenHash;
+      this.bifrostChangeModeEndpoint = bifrostChangeModeEndpoint;
+      this.bifrostTriggerShortcutEndpoint = bifrostTriggerShortcutEndpoint;
    }
 
    public fun getBifrostChangeModeEndpoint(siteId: String, modeString: String): String {
-      val var4: java.lang.String = this.bifrostChangeModeEndpoint;
-      val var3: StringBuilder = new StringBuilder();
-      var3.append(var4);
-      var3.append("/sites/");
-      var3.append(var1);
-      var3.append("/widget/modes/");
-      var3.append(var2);
-      return var3.toString();
+      return "${this.bifrostChangeModeEndpoint}/sites/$siteId/widget/modes/$modeString";
    }
 
    public fun getBifrostGetModeEndpoint(siteId: String): String {
-      val var3: java.lang.String = this.bifrostGetModeEndpoint;
-      val var2: StringBuilder = new StringBuilder();
-      var2.append(var3);
-      var2.append("/sites/");
-      var2.append(var1);
-      var2.append("/widget/mode");
-      return var2.toString();
+      return "${this.bifrostGetModeEndpoint}/sites/$siteId/widget/mode";
    }
 
    public fun getBifrostTriggerShortcutEndpoint(siteId: String, shortcutId: String): String {
-      val var3: java.lang.String = this.bifrostTriggerShortcutEndpoint;
-      val var4: StringBuilder = new StringBuilder();
-      var4.append(var3);
-      var4.append("/sites/");
-      var4.append(var1);
-      var4.append("/widget/shortcuts/");
-      var4.append(var2);
-      return var4.toString();
+      return "${this.bifrostTriggerShortcutEndpoint}/sites/$siteId/widget/shortcuts/$shortcutId";
    }
 
    public fun getHeimdallGetSiteTokenHash(siteId: String): String {
-      val var3: java.lang.String = this.heimdallGetSiteTokenHash;
-      val var2: StringBuilder = new StringBuilder();
-      var2.append(var3);
-      var2.append("/auth/exchange/");
-      var2.append(var1);
-      return var2.toString();
+      return "${this.heimdallGetSiteTokenHash}/auth/exchange/$siteId";
    }
 
    public companion object {
-      public final val beta: RuntimeEnv
-      public final val prod: RuntimeEnv
+      public final val beta: RuntimeEnv = RuntimeEnv("LuywhcHkYkuqXauj", "P70ImeXB5yvLOgTLfKZhVXMxzZze4t0B", "https://niflheim-beta.futurehome.io", "https://heimdall-beta.futurehome.io/auth/check", "https://bifrost-beta.futurehome.io", "https://heimdall-beta.futurehome.io", "https://bifrost-beta.futurehome.io", "https://bifrost-beta.futurehome.io");
+      public final val prod: RuntimeEnv = RuntimeEnv("KqpPAhpTbLbDODiz", "5UBzu037kP8Qu33T8ZHELbA22owrMePp", "https://niflheim.futurehome.io", "https://heimdall.futurehome.io/auth/check", "https://bifrost.futurehome.io", "https://heimdall.futurehome.io", "https://bifrost.futurehome.io", "https://bifrost.futurehome.io");
    }
 }
